@@ -1,0 +1,18 @@
+button {
+  width: 80%;
+  font-weight: 700;
+  background-color: #ffffff;
+  padding: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 1.5rem;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all ease 0.6s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

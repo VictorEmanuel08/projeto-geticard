@@ -1,0 +1,25 @@
+html, body {
+    //height: 100%;
+    margin: 0;
+  }
+  
+  /* Estilizando a barra de rolagem */
+  ::-webkit-scrollbar {
+    width: 2px; /* Largura da barra de rolagem */
+  }
+  
+  /* Estilizando o trilho da barra de rolagem */
+  ::-webkit-scrollbar-track {
+    background-color: #191919; /* Cor de fundo do trilho */
+  }
+  
+  /* Estilizando o indicador da barra de rolagem */
+  ::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9; /* Cor do indicador */
+    border-radius: 4px; /* Raio das bordas do indicador */
+  }
+  
+  /* Alterando a cor do indicador quando estiver em hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }

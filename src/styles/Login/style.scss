@@ -1,0 +1,154 @@
+// @media (max-width: 400px) {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+.main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 99.9vw;
+  align-self: center;
+  flex-direction: column;
+}
+
+.login-page {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  //background-color: #191919;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 2rem;
+}
+
+.login-form {
+  text-align: center;
+}
+
+.loginText {
+  margin-top: 4rem;
+  font-size: 1.6rem;
+}
+
+.form-group-email,
+.form-group-senha {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.form-group-senha {
+  position: relative;
+  .button-hidden {
+    position: absolute;
+    right: 0px;
+    padding-right: 0.8rem;
+    padding-top: 2.25rem;
+    color: #191919;
+    cursor: pointer;
+  }
+}
+
+input {
+  width: 100%;
+  color: #191919;
+  margin-top: 0.3rem;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  border-radius: 0.375rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.forgot-password {
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all ease 0.6s;
+}
+a:hover {
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+
+button {
+  width: 80%;
+  background-color: #ffffff;
+  padding: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 1.5rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all ease 0.6s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.geticardInfo {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-bottom: 3rem;
+}
+
+.geticard-contact {
+  display: flex;
+  // align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.icon {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #191919;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+.icon:hover {
+  font-size: 1.75rem;
+}
+
+.footer {
+  .logoGeti {
+    width: 5rem;
+    // height: 3rem;
+  }
+}
+.circleBlue {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 6rem;
+  height: 6rem;
+}
+.circleGreen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6rem;
+}
+
+// }

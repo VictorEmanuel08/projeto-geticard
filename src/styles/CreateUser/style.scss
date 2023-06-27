@@ -1,0 +1,153 @@
+// @media (max-width: 400px) {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+html,
+body {
+  margin: 0;
+  background-color: #191919;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #ffffff;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+span {
+  margin-bottom: 0.5rem;
+}
+
+.info-text {
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+.arrowToBack {
+  position: relative;
+  align-self: first baseline;
+}
+
+.buttonToBack {
+  background-color: #191919;
+  color: #ffffff;
+  font-size: 1.5rem;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.login-page {
+  width: 90vw;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-text {
+  margin-top: 2rem;
+  margin-bottom: 3.375rem;
+  font-size: 1.625rem;
+}
+
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+
+    .button-hidden {
+        position: absolute;
+        right: 0px;
+        padding-right: 0.8rem;
+        padding-top: 2.25rem;
+        color: #191919;
+        cursor: pointer;
+    }
+    
+}
+
+input {
+  width: 100%;
+  color: #191919;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 17px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+label {
+  margin-left: 8px;
+}
+
+.forgot-password {
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all ease 0.6s;
+}
+
+a:hover {
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+
+.button {
+  background-color: #ffffff;
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 1.5rem;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all ease 0.6s;
+  font-weight: 700;
+  filter: drop-shadow(4px 4px 4px rgba(217, 217, 217, 0.5));
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.geticard-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-bottom: 5rem;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.footer {
+  img {
+    width: 8rem;
+    height: 5rem;
+  }
+}
+
+.info-text.error {
+  margin: 1rem;
+  color: rgb(112, 0, 0);
+}
+
+// }

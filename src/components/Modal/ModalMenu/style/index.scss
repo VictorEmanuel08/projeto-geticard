@@ -1,0 +1,159 @@
+@keyframes openMenu {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes closeMenu {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes buttonOpen {
+  from {
+    left: 0;
+  }
+  to {
+    left: 70%;
+  }
+}
+
+@keyframes buttonClose {
+  from {
+    left: 95%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Cor escura de fundo */
+  z-index: 2; /* Certifique-se de que o overlay fique acima do conteúdo */
+}
+
+.menuu {
+  width: 100%;
+  z-index: 2;
+}
+
+.dropdown {
+  position: relative;
+  // width: 18rem;
+  // display: inline-block;
+  display: flex;
+  justify-content: flex-start;
+  // align-self: first baseline;
+}
+
+.dropdown-toggle {
+  position: absolute;
+  width: 4rem;
+  top: -3rem;
+  // top: 6px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ffffff;
+
+  &.open {
+    animation: buttonOpen 0.3s ease-in-out forwards;
+  }
+  &.close {
+    animation: buttonClose 0.3s ease-in-out forwards;
+  }
+}
+
+.dropdown-menu {
+  z-index: 1;
+  width: 18rem;
+  z-index: 3;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+//left: 10%
+//left: 50%
+
+
+  background-color: #191919;
+  border-radius: 0px 10px 10px 0px;
+  margin-top: 0.5rem;
+  list-style: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s;
+
+  &.open {
+    animation: openMenu 0.3s ease-in-out forwards;
+  }
+  &.close {
+    animation: closeMenu 0.3s ease-in-out forwards;
+  }
+}
+
+.dropdown-item {
+  padding: 1.5rem 1rem;
+}
+.itens-go {
+  cursor: pointer;
+}
+.itens-go:hover {
+  text-decoration: underline;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+.modal-content {
+  background-color: #ffffffff;
+  color: #000000;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.modal-options {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 2rem;
+  padding: 1rem;
+  .option {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .option:hover {
+    background-color: #888888;
+    padding: 0.5rem;
+  }
+}
