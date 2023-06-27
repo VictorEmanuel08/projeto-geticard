@@ -3,6 +3,7 @@ import "../../styles/Card/card.scss";
 //{Bibliotecas}
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import copy from "copy-to-clipboard";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 //{Assets}
@@ -101,6 +102,28 @@ export function CardView() {
     phoneNumber: user.whatsAppUser,
   };
 
+    const copyPix = () => {
+    try {
+      const chavePix = user.pixUser;
+
+      copy(chavePix);
+      toast.info(`Chave pix copiada para sua área de transferência.`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      alert(
+        "A funcionalidade de cópia para a área de transferência não é suportada neste navegador."
+      );
+    }
+  };
+
   return (
     <div className="main">
       <ToastContainer />
@@ -174,7 +197,7 @@ export function CardView() {
             )}
 
             {user.linkedInUser !== "" ? (
-              <Link to={`www.${user.facebookUser}`} target="_blank">
+              <Link to={`https://${user.linkedInUser}`} target="_blank">
                 <div className="link">
                   <AiOutlineLinkedin className="icon" />
                   LinkedIn
@@ -185,7 +208,7 @@ export function CardView() {
             )}
 
             {user.facebookUser !== "" ? (
-              <Link>
+              <Link to={`https://${user.facebookUser}`} target="_blank">
                 <div className="link">
                   <AiOutlineFacebook className="icon" />
                   Facebook
@@ -195,7 +218,7 @@ export function CardView() {
               ""
             )}
             {user.lattesUser !== "" ? (
-              <Link>
+              <Link to={`https://${user.lattesUser}`} target="_blank">
                 <div className="link">
                   <img
                     src={logoLattes}
@@ -210,7 +233,7 @@ export function CardView() {
             )}
 
             {user.githubUser !== "" ? (
-              <Link>
+              <Link to={`https://${user.githubUser}`} target="_blank">
                 <div className="link">
                   <AiOutlineGithub className="icon" />
                   Github
@@ -221,7 +244,7 @@ export function CardView() {
             )}
 
             {user.siteUser !== "" ? (
-              <Link>
+              <Link to={`https://${user.siteUser}`} target="_blank">
                 <div className="link">
                   <CgWebsite className="icon" />
                   Site
@@ -232,13 +255,13 @@ export function CardView() {
             )}
 
             {user.pixUser !== "" ? (
-              <Link>
-                <div className="link">
-                  <MdPix className="icon" />
-                  Chave Pix
-                </div>
-              </Link>
+              // <Link>
+              <div className="link" onClick={copyPix}>
+                <MdPix className="icon" />
+                Chave Pix
+              </div>
             ) : (
+              // </Link>
               ""
             )}
           </div>

@@ -86,7 +86,7 @@ export function CardEdit() {
           bio: response.data.biografia,
           whatsapp: response.data.whatsapp,
           instagram: response.data.instagram,
-          linkedin: response.data.site,
+          linkedin: response.data.twitter,
           facebook: response.data.facebook,
           lattes: response.data.lattes,
           github: response.data.github,
@@ -101,26 +101,27 @@ export function CardEdit() {
 
     fetchData();
   }, [card_id]);
+  
 
   async function AttCard() {
     try {
       await axios.put(
         `https://plju4d3xqye5o52gpuwa7slvdy0vaijv.lambda-url.us-east-2.on.aws/?card_id=${card_id}`,
         {
-          nome: profile.nome,
           card_id: card_id,
           foto_perfil: profile.foto,
-          whatsapp: profile.whatsapp,
+          nome: profile.nome,
           formacao: profile.formacao,
           cargo_atual: profile.cargo_atual,
           biografia: profile.bio,
-          chave_pix: profile.pix,
-          lattes: profile.lattes,
+          whatsapp: profile.whatsapp,
           instagram: profile.instagram,
-          twitter: "testuser",
+          twitter : profile.linkedin,
           facebook: profile.facebook,
+          lattes: profile.lattes,
           github: profile.github,
           site: profile.site,
+          chave_pix: profile.pix,
         }
       );
       toast.info("GetiCard editado com sucesso!", {

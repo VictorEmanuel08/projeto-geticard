@@ -109,7 +109,7 @@ export function CreateCard() {
           chave_pix: profile.pix,
           lattes: profile.lattes,
           instagram: profile.instagram,
-          twitter: "testuser",
+          twitter: profile.linkedin,
           facebook: profile.facebook,
           github: profile.github,
           site: profile.site,
@@ -163,7 +163,7 @@ export function CreateCard() {
         </div>
 
         <div className="login-form">
-        <div>
+          <div>
             <div className="profile-picture" onClick={handleChooseFile}>
               {profile.foto ? (
                 profile.foto && <img src={profile.foto} alt="Profile" />

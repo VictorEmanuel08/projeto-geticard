@@ -3,6 +3,7 @@ import "../../styles/Card/card.scss";
 //{Bibliotecas}
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import copy from "copy-to-clipboard";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -61,6 +62,7 @@ export function CardUser() {
             },
           }
         );
+        console.log(response.data);
         setUser({
           fotoUser: response.data.foto_perfil,
           nomeUser: response.data.nome,
@@ -69,7 +71,7 @@ export function CardUser() {
           bioUser: response.data.biografia,
           whatsAppUser: response.data.whatsapp,
           instagramUser: response.data.instagram,
-          linkedInUser: response.data.site,
+          linkedInUser: response.data.twitter,
           facebookUser: response.data.facebook,
           lattesUser: response.data.lattes,
           githubUser: response.data.github,
@@ -107,9 +109,31 @@ export function CardUser() {
     window.open(`tel:${user.whatsAppUser}`, "_blank");
   };
 
+  const copyPix = () => {
+    try {
+      const chavePix = user.pixUser;
+
+      copy(chavePix);
+      toast.info(`Chave pix copiada para sua área de transferência.`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      alert(
+        "A funcionalidade de cópia para a área de transferência não é suportada neste navegador."
+      );
+    }
+  };
+
   return (
     <div className="main">
-      <ToastContainer/>
+      <ToastContainer />
       <img src={circleGreen} alt="círculo verde" className="circleGreen" />
       <img src={circleBlue} alt="círculo azul" className="circleeBlue" />
       <ModalMenu />
@@ -182,7 +206,7 @@ export function CardUser() {
             )}
 
             {user.linkedInUser !== "" ? (
-              <Link to={`www.${user.facebookUser}`} target="_blank">
+              <Link to={`https://${user.linkedInUser}`} target="_blank">
                 <div className="link">
                   <AiOutlineLinkedin className="icon" />
                   LinkedIn
@@ -193,7 +217,7 @@ export function CardUser() {
             )}
 
             {user.facebookUser !== "" ? (
-              <Link>
+              <Link to={`https://${user.facebookUser}`} target="_blank">
                 <div className="link">
                   <AiOutlineFacebook className="icon" />
                   Facebook
@@ -203,7 +227,7 @@ export function CardUser() {
               ""
             )}
             {user.lattesUser !== "" ? (
-              <Link>
+              <Link to={`https://${user.lattesUser}`} target="_blank">
                 <div className="link">
                   <img
                     src={logoLattes}
@@ -218,7 +242,7 @@ export function CardUser() {
             )}
 
             {user.githubUser !== "" ? (
-              <Link>
+              <Link to={`https://${user.githubUser}`} target="_blank">
                 <div className="link">
                   <AiOutlineGithub className="icon" />
                   Github
@@ -229,7 +253,7 @@ export function CardUser() {
             )}
 
             {user.siteUser !== "" ? (
-              <Link>
+              <Link to={`https://${user.siteUser}`} target="_blank">
                 <div className="link">
                   <CgWebsite className="icon" />
                   Site
@@ -240,13 +264,13 @@ export function CardUser() {
             )}
 
             {user.pixUser !== "" ? (
-              <Link>
-                <div className="link">
-                  <MdPix className="icon" />
-                  Chave Pix
-                </div>
-              </Link>
+              // <Link>
+              <div className="link" onClick={copyPix}>
+                <MdPix className="icon" />
+                Chave Pix
+              </div>
             ) : (
+              // </Link>
               ""
             )}
           </div>
