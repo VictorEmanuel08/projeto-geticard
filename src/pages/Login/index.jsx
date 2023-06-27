@@ -131,7 +131,7 @@ export function Login() {
             )}
           </div>
           <div className="geticardInfo">
-            <span>Adquiriu seu GetiCard agora?</span>
+            <span>Adquira seu GetiCard agora.</span>
             <div className="geticard-contact">
               <Link
                 to={`https://api.whatsapp.com/send?phone=+5598992303667&text=Olá! Eu quero um GetiCard.`}
