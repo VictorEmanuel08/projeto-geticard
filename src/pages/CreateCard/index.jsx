@@ -25,9 +25,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export function CreateCard() {
+  //puxando o fomrState da página anterior
   const location = useLocation();
   const { formState } = location.state;
-  //puxando o fomrState da página anterior
+
   const { card_id } = useParams();
   const fileInputRef = useRef(null);
 
@@ -78,6 +79,23 @@ export function CreateCard() {
       updatedValue = updatedValue.slice(0, 11); // Limita o número a 11 dígitos
     }
 
+    if (
+      [
+        "instagram",
+        "linkedin",
+        "facebook",
+        "lattes",
+        "github",
+        "site",
+      ].includes(name)
+    ) {
+      if (updatedValue.startsWith("http://")) {
+        updatedValue = updatedValue.replace("http://", ""); // Remove "http://"
+      } else if (updatedValue.startsWith("https://")) {
+        updatedValue = updatedValue.replace("https://", ""); // Remove "https://"
+      }
+    }
+
     setProfile((prevProfile) => ({
       ...prevProfile,
       [name]: updatedValue,
@@ -99,17 +117,16 @@ export function CreateCard() {
         {
           nome: formState.name,
           email: formState.email,
-          senha: formState.password,
+          whatsapp: profile.whatsapp,
           card_id: card_id,
           foto_perfil: profile.foto,
-          whatsapp: profile.whatsapp,
           formacao: profile.formacao,
           cargo_atual: profile.cargo_atual,
           biografia: profile.bio,
           chave_pix: profile.pix,
           lattes: profile.lattes,
           instagram: profile.instagram,
-          twitter: profile.linkedin,
+          linkedin: profile.linkedin,
           facebook: profile.facebook,
           github: profile.github,
           site: profile.site,
@@ -125,9 +142,7 @@ export function CreateCard() {
         progress: undefined,
         theme: "light",
       });
-      setTimeout(() => {
-        travelToNextPage();
-      }, 1000);
+      travelToNextPage();
     } catch (error) {
       console.log(error);
       if (error.response && error.response.status === 400) {

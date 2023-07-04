@@ -7,7 +7,6 @@ function SaveContactButton({ contact }) {
     const contactURL = `tel:${phoneNumber}?name=${encodeURIComponent(name)}`;
 
     window.location.href = contactURL;
-    console.log(phoneNumber, name)
   };
 
   return <button onClick={handleSaveContact}>Salvar Contato</button>;

@@ -86,7 +86,7 @@ export function CardEdit() {
           bio: response.data.biografia,
           whatsapp: response.data.whatsapp,
           instagram: response.data.instagram,
-          linkedin: response.data.twitter,
+          linkedin: response.data.linkedin,
           facebook: response.data.facebook,
           lattes: response.data.lattes,
           github: response.data.github,
@@ -101,27 +101,26 @@ export function CardEdit() {
 
     fetchData();
   }, [card_id]);
-  
 
   async function AttCard() {
     try {
       await axios.put(
         `https://plju4d3xqye5o52gpuwa7slvdy0vaijv.lambda-url.us-east-2.on.aws/?card_id=${card_id}`,
         {
-          card_id: card_id,
-          foto_perfil: profile.foto,
           nome: profile.nome,
+          card_id: card_id,
+          whatsapp: profile.whatsapp,
+          foto_perfil: profile.foto,
           formacao: profile.formacao,
           cargo_atual: profile.cargo_atual,
+          chave_pix: profile.pix,
           biografia: profile.bio,
-          whatsapp: profile.whatsapp,
-          instagram: profile.instagram,
-          twitter : profile.linkedin,
-          facebook: profile.facebook,
           lattes: profile.lattes,
+          instagram: profile.instagram,
+          linkedin: profile.linkedin,
+          facebook: profile.facebook,
           github: profile.github,
           site: profile.site,
-          chave_pix: profile.pix,
         }
       );
       toast.info("GetiCard editado com sucesso!", {
@@ -134,9 +133,7 @@ export function CardEdit() {
         progress: undefined,
         theme: "light",
       });
-      setTimeout(() => {
-        navigate(`/card-user/${card_id}`);
-      }, 1000);
+      navigate(`/card-user/${card_id}`);
     } catch (error) {
       alert("erro");
       console.error(error);
@@ -152,6 +149,23 @@ export function CardEdit() {
     if (name === "whatsapp") {
       updatedValue = updatedValue.replace(/\D/g, ""); // Remove caracteres não numéricos
       updatedValue = updatedValue.slice(0, 11); // Limita o número a 11 dígitos
+    }
+
+    if (
+      [
+        "instagram",
+        "linkedin",
+        "facebook",
+        "lattes",
+        "github",
+        "site",
+      ].includes(name)
+    ) {
+      if (updatedValue.startsWith("http://")) {
+        updatedValue = updatedValue.replace("http://", ""); // Remove "http://"
+      } else if (updatedValue.startsWith("https://")) {
+        updatedValue = updatedValue.replace("https://", ""); // Remove "https://"
+      }
     }
 
     setProfile((prevProfile) => ({
@@ -217,7 +231,6 @@ export function CardEdit() {
                 />
                 <p className="bio-count">
                   {profile.bio.length}/{maxLengthBio}
-                  {/* {profile.bioUser.length}/{maxLengthBio} */}
                 </p>
               </div>
 

@@ -37,19 +37,6 @@ export function Login() {
       setIsLoading(true);
       setError("");
       login(email, password);
-      // await axios.post(
-      //   "https://javbstvpofyg5dxpvk2v7fppqy0qoibr.lambda-url.us-east-2.on.aws/",
-      //   {
-      //     email: email,
-      //     password: password,
-      //   },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
-      // );
-      console.log("sucess");
     } catch (error) {
       if (error.response && error.response.status === 401) {
         toast.error("E-mail ou senha inválidos!", {
@@ -142,7 +129,6 @@ export function Login() {
 
               <AiOutlineMail className="icon" onClick={handleEmailClick} />
             </div>
-            {/* <a href="/cadastrar-usuario">Clique aqui</a> */}
           </div>
         </div>
         <div className="footer">

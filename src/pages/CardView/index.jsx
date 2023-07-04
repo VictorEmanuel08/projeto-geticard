@@ -14,6 +14,7 @@ import logoLattes from "../../assets/lattes.png";
 
 //{Icons}
 import {
+  AiOutlineMail,
   AiOutlineWhatsApp,
   AiOutlineInstagram,
   AiOutlineFacebook,
@@ -39,6 +40,7 @@ export function CardView() {
     formacaoUser: "",
     cargoAtualUser: "",
     bioUser: "",
+    emailUser: "",
     whatsAppUser: "",
     instagramUser: "",
     linkedInUser: "",
@@ -54,6 +56,7 @@ export function CardView() {
       try {
         const response = await axios.get(
           "https://fa4uvgt6dzfkaf4khpwslybcgy0niuvd.lambda-url.us-east-2.on.aws",
+          //passando params
           {
             params: {
               card_id: card_id,
@@ -65,6 +68,7 @@ export function CardView() {
           nomeUser: response.data.nome,
           formacaoUser: response.data.formacao,
           cargoAtualUser: response.data.cargo_atual,
+          emailUser: response.data.email,
           bioUser: response.data.biografia,
           whatsAppUser: response.data.whatsapp,
           instagramUser: response.data.instagram,
@@ -102,7 +106,7 @@ export function CardView() {
     phoneNumber: user.whatsAppUser,
   };
 
-    const copyPix = () => {
+  const copyPix = () => {
     try {
       const chavePix = user.pixUser;
 
@@ -122,6 +126,18 @@ export function CardView() {
         "A funcionalidade de cópia para a área de transferência não é suportada neste navegador."
       );
     }
+  };
+
+  const handleEmailClick = () => {
+    const email = user.emailUser;
+    const subject = "Contatar";
+    const body = "Olá! Eu vim pelo seu GetiCard.";
+
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -171,6 +187,16 @@ export function CardView() {
             ""
           )}
           <div className="links-user">
+            {user.emailUser !== "" ? (
+              <Link>
+                <div className="link" onClick={handleEmailClick}>
+                  <AiOutlineMail className="icon" />
+                  Email
+                </div>
+              </Link>
+            ) : (
+              ""
+            )}
             {user.whatsAppUser !== "" ? (
               <Link
                 to={`https://api.whatsapp.com/send?phone=+55${user.whatsAppUser}&text=Olá! Vim pelo seu GetiCard.`}
@@ -255,13 +281,13 @@ export function CardView() {
             )}
 
             {user.pixUser !== "" ? (
-              // <Link>
-              <div className="link" onClick={copyPix}>
-                <MdPix className="icon" />
-                Chave Pix
-              </div>
+              <Link>
+                <div className="link" onClick={copyPix}>
+                  <MdPix className="icon" />
+                  Chave Pix
+                </div>
+              </Link>
             ) : (
-              // </Link>
               ""
             )}
           </div>
