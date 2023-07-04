@@ -101,27 +101,26 @@ export function CardEdit() {
 
     fetchData();
   }, [card_id]);
-  
 
   async function AttCard() {
     try {
       await axios.put(
         `https://plju4d3xqye5o52gpuwa7slvdy0vaijv.lambda-url.us-east-2.on.aws/?card_id=${card_id}`,
         {
-          card_id: card_id,
-          foto_perfil: profile.foto,
           nome: profile.nome,
+          card_id: card_id,
+          whatsapp: profile.whatsapp,
+          foto_perfil: profile.foto,
           formacao: profile.formacao,
           cargo_atual: profile.cargo_atual,
+          chave_pix: profile.pix,
           biografia: profile.bio,
-          whatsapp: profile.whatsapp,
-          instagram: profile.instagram,
-          twitter : profile.linkedin,
-          facebook: profile.facebook,
           lattes: profile.lattes,
+          instagram: profile.instagram,
+          twitter: profile.linkedin,
+          facebook: profile.facebook,
           github: profile.github,
           site: profile.site,
-          chave_pix: profile.pix,
         }
       );
       toast.info("GetiCard editado com sucesso!", {
@@ -134,9 +133,7 @@ export function CardEdit() {
         progress: undefined,
         theme: "light",
       });
-      setTimeout(() => {
-        navigate(`/card-user/${card_id}`);
-      }, 1000);
+      navigate(`/card-user/${card_id}`);
     } catch (error) {
       alert("erro");
       console.error(error);

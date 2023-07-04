@@ -16,6 +16,7 @@ import logoLattes from "../../assets/lattes.png";
 
 //{Icons}
 import {
+  AiOutlineMail,
   AiOutlineWhatsApp,
   AiOutlineInstagram,
   AiOutlineFacebook,
@@ -41,6 +42,7 @@ export function CardUser() {
     formacaoUser: "",
     cargoAtualUser: "",
     bioUser: "",
+    emailUser: "",
     whatsAppUser: "",
     instagramUser: "",
     linkedInUser: "",
@@ -62,12 +64,12 @@ export function CardUser() {
             },
           }
         );
-        console.log(response.data);
         setUser({
           fotoUser: response.data.foto_perfil,
           nomeUser: response.data.nome,
           formacaoUser: response.data.formacao,
           cargoAtualUser: response.data.cargo_atual,
+          emailUser: response.data.email,
           bioUser: response.data.biografia,
           whatsAppUser: response.data.whatsapp,
           instagramUser: response.data.instagram,
@@ -100,11 +102,6 @@ export function CardUser() {
     fetchData();
   }, [card_id, navigate]);
 
-  // const contact = {
-  //   name: user.nomeUser,
-  //   phoneNumber: user.whatsAppUser,
-  // };
-
   const abrirTelaDiscagem = () => {
     window.open(`tel:${user.whatsAppUser}`, "_blank");
   };
@@ -114,6 +111,7 @@ export function CardUser() {
       const chavePix = user.pixUser;
 
       copy(chavePix);
+      
       toast.info(`Chave pix copiada para sua área de transferência.`, {
         position: "top-right",
         autoClose: 2000,
@@ -129,6 +127,17 @@ export function CardUser() {
         "A funcionalidade de cópia para a área de transferência não é suportada neste navegador."
       );
     }
+  };
+  const handleEmailClick = () => {
+    const email = user.emailUser;
+    const subject = "Contatar";
+    const body = "Olá! Eu vim pelo seu GetiCard.";
+
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -180,6 +189,16 @@ export function CardUser() {
             ""
           )}
           <div className="links-user">
+            {user.emailUser !== "" ? (
+              <Link>
+                <div className="link" onClick={handleEmailClick}>
+                  <AiOutlineMail className="icon" />
+                  Email
+                </div>
+              </Link>
+            ) : (
+              ""
+            )}
             {user.whatsAppUser !== "" ? (
               <Link
                 to={`https://api.whatsapp.com/send?phone=+55${user.whatsAppUser}&text=Olá! Vim pelo seu GetiCard.`}
@@ -264,13 +283,13 @@ export function CardUser() {
             )}
 
             {user.pixUser !== "" ? (
-              // <Link>
-              <div className="link" onClick={copyPix}>
-                <MdPix className="icon" />
-                Chave Pix
-              </div>
+              <Link>
+                <div className="link" onClick={copyPix}>
+                  <MdPix className="icon" />
+                  Chave Pix
+                </div>
+              </Link>
             ) : (
-              // </Link>
               ""
             )}
           </div>

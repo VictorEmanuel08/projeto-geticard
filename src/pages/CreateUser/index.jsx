@@ -97,9 +97,7 @@ export function CreateUser() {
         theme: "light",
       });
       OtherPage(formState.email, formState.password);
-      setTimeout(() => {
-        travelToNextPage();
-      }, 2000);
+      travelToNextPage();
     } catch (error) {
       if (error.response && error.response.status === 400) {
         toast.error("Já existe um usuário cadastrado com esse e-mail.", {
@@ -131,7 +129,6 @@ export function CreateUser() {
         <div className="login-form">
           <p className="login-text">Realize seu cadastro!</p>
           <form>
-            
             {/* Nome */}
             <div className="form-group">
               <label htmlFor="name">Nome Completo</label>

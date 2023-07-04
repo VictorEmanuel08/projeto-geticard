@@ -99,10 +99,10 @@ export function CreateCard() {
         {
           nome: formState.name,
           email: formState.email,
-          senha: formState.password,
+          whatsapp: profile.whatsapp,
+          // senha: formState.password,
           card_id: card_id,
           foto_perfil: profile.foto,
-          whatsapp: profile.whatsapp,
           formacao: profile.formacao,
           cargo_atual: profile.cargo_atual,
           biografia: profile.bio,
@@ -125,9 +125,7 @@ export function CreateCard() {
         progress: undefined,
         theme: "light",
       });
-      setTimeout(() => {
-        travelToNextPage();
-      }, 1000);
+      travelToNextPage();
     } catch (error) {
       console.log(error);
       if (error.response && error.response.status === 400) {
