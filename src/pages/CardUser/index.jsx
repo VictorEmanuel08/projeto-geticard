@@ -64,7 +64,6 @@ export function CardUser() {
             },
           }
         );
-
         setUser({
           fotoUser: response.data.foto_perfil,
           nomeUser: response.data.nome,
@@ -110,7 +109,6 @@ export function CardUser() {
       const chavePix = user.pixUser;
 
       copy(chavePix);
-
       toast.info(`Chave pix copiada para sua área de transferência.`, {
         position: "top-right",
         autoClose: 2000,
