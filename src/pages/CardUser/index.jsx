@@ -64,7 +64,6 @@ export function CardUser() {
             },
           }
         );
-          console.log(response.data)
 
         setUser({
           fotoUser: response.data.foto_perfil,
