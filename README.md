@@ -62,12 +62,19 @@ Para visualizar a configuração da hospedagem na AWS Amplify, entre em contato 
 Os QR-Codes foram criados no
 <a href="https://me-qr.com">me-qr</a>, um gerador gratuito de QR-Code que permite ainda a sua estilização.
 
-Meu QR-Code de exemplo:
-<img src="./src/assets/QR-CODE-Victor.png" alt="QR-CODE de Victor"/>
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <p>Meu QR-Code de exemplo</p>
+      <img src="./src/assets/QR-CODE-Victor.png" alt="QR-CODE de Victor" width="50%" height="50%">
+    </td>
+    <td align="center" width="50%">
+      <p>Meu GetiCard:</p>
+      <img src="./src/assets/GETICARD-VICTOR.png" alt="GetiCard de Victor" width="50%" height="50%">
+    </td>
+  </tr>
+</table>
 
-Meu GetiCard:
-
-<img src="./src/assets/GETICARD-VICTOR.png" alt="GetiCard de Victor"/>
 
 Você também pode acessá-lo clicando
 <a href="https://main.d2mzphd0dypmws.amplifyapp.com/card-view/victor">
