@@ -4,7 +4,7 @@ import "../../styles/Card/card.scss";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import copy from "copy-to-clipboard";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -32,6 +32,9 @@ import ShareButton from "../../components/shareButton";
 // import SaveContactButton from "../../components/saveContact";
 
 export function CardUser() {
+  const location = useLocation();
+  const { dadosUsuario } = location.state;
+
   const { card_id } = useParams();
 
   const navigate = useNavigate();
@@ -82,23 +85,28 @@ export function CardUser() {
         });
       } catch (error) {
         if (error.response && error.response.status === 404) {
-          toast.success("Bem-vindo ao GetiCard! Faça seu cadastro.", {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
+          toast.success(
+            "Bem-vindo de volta ao GetiCard! Refaça seu cadastro.",
+            {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            }
+          );
+          navigate(`/recadastrar-card/${card_id}`, {
+            state: { dadosUsuario },
           });
-          navigate(`/cadastrar-usuario/${card_id}`);
         }
       }
     };
 
     fetchData();
-  }, [card_id, navigate]);
+  }, [card_id, navigate, dadosUsuario]);
 
   const abrirTelaDiscagem = () => {
     window.open(`tel:${user.whatsAppUser}`, "_blank");

@@ -35,10 +35,15 @@ export const AuthProvider = ({ children }) => {
         }
       );
 
-      const loggedUser = response.config.data;
+      //.trim() tira os espaços vazios
+      const loggedUser = response.config.data.trim();
+
+      //separa o loggedUser string em objetos
+      const dadosUsuario = JSON.parse(loggedUser);
+      //console.log(dadosUsuario); //exibe o objeto
+
       // const token = response.data.token;
 
-      // console.log("user:", loggedUser);
       // console.log("token: ", token);
       // console.log("user: ", response.config.data);
 
@@ -48,7 +53,6 @@ export const AuthProvider = ({ children }) => {
       // response.defaults.headers.Authorization = `Bearer ${token}`;
 
       const card_id = response.data.card_id;
-      setUser(loggedUser);
       toast.success("Bem-vindo ao GetiCard!", {
         position: "top-right",
         autoClose: 2000,
@@ -60,9 +64,7 @@ export const AuthProvider = ({ children }) => {
         theme: "light",
       });
 
-      setTimeout(() => {
-        navigate(`/card-user/${card_id}`);
-      }, 2000);
+      navigate(`/card-user/${card_id}`, { state: { dadosUsuario } });
     } catch (error) {
       if (error.response.status === 401) {
         toast.error("E-mail ou senha inválidos!", {

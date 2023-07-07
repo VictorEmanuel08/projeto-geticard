@@ -1,6 +1,7 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { Login } from "../pages/Login";
 import { CreateUser } from "../pages/CreateUser";
+import { RecreateCard } from "../pages/RecreateCard";
 import { CreateCard } from "../pages/CreateCard";
 import { CardUser } from "../pages/CardUser";
 import { CardView } from "../pages/CardView";
@@ -24,6 +25,7 @@ export function App() {
               </Private>
             }
           />
+          <Route path="/recadastrar-card/:card_id" element={<RecreateCard />} />
 
           <Route
             path="/editar-card/:card_id"
